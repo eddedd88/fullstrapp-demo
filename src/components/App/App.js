@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Wrapper from '../Wrapper'
+import DemoApp from '../../prototypes/DemoApp'
 
 class App extends Component<{||}> {
   render () {
-    return <Wrapper>Welcome to the your new app!</Wrapper>
+    return <DemoApp />
   }
 }
 
