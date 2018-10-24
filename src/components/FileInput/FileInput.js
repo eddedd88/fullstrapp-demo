@@ -5,12 +5,12 @@ type Props = {
 }
 
 class FileInput extends Component<Props> {
-  render () {
+  render() {
     const { children, ...rest } = this.props
 
     return (
       <label>
-        <input {...rest} type='file' hidden />
+        <input {...rest} type="file" hidden />
         {children}
       </label>
     )

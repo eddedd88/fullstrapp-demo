@@ -38,29 +38,29 @@ class FullScreenDialogAppBar extends Component<Props> {
     submitLabel: 'save'
   }
 
-  render () {
+  render() {
     const { title, submitLabel, submitButton, onClose, classes } = this.props
 
     return (
       <AppBar>
         <Toolbar>
           <IconButton
-            color='inherit'
+            color="inherit"
             onClick={onClose}
-            aria-label='Close'
+            aria-label="Close"
             className={classes.closeButton}
           >
             <CloseIcon />
           </IconButton>
-          <Typography variant='title' color='inherit' className={classes.title}>
+          <Typography variant="title" color="inherit" className={classes.title}>
             {title}
           </Typography>
 
           {submitButton || (
             <Button
-              color='inherit'
-              type='submit'
-              size='small'
+              color="inherit"
+              type="submit"
+              size="small"
               className={classes.submitButotn}
             >
               {submitLabel}
