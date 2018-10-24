@@ -22,21 +22,21 @@ const AppTitle = withStyles((theme: Theme) => ({
 }))(Typography)
 
 class AppBar extends Component<Props> {
-  render () {
+  render() {
     const { title, backLink } = this.props
 
     return (
-      <MaterialAppBar position='static'>
+      <MaterialAppBar position="static">
         <Toolbar disableGutters>
           {backLink && (
-            <IconButton color='inherit' component={Link} to={backLink}>
+            <IconButton color="inherit" component={Link} to={backLink}>
               <ArrowBackIcon />
             </IconButton>
           )}
-          <AppTitle variant='title' color='inherit'>
+          <AppTitle variant="title" color="inherit">
             {title}
           </AppTitle>
-          <ExpandableSearch onChangeValue={console.log} placeholder='Search' />
+          <ExpandableSearch onChangeValue={console.log} placeholder="Search" />
         </Toolbar>
       </MaterialAppBar>
     )

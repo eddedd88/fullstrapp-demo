@@ -89,14 +89,14 @@ class ExpandableSearch extends Component<Props, State> {
     }
   }
 
-  render () {
+  render() {
     const { placeholder } = this.props
 
     const { value, searchModeOn } = this.state
 
     return (
       <Fragment>
-        <IconButton color='inherit' onClick={this.toggleSearchMode}>
+        <IconButton color="inherit" onClick={this.toggleSearchMode}>
           <SearchIcon />
         </IconButton>
 
@@ -105,7 +105,7 @@ class ExpandableSearch extends Component<Props, State> {
             <Paper
               square
               elevation={1}
-              color='inherit'
+              color="inherit"
               style={{
                 ...defaultStyle,
                 ...transitionStyles[transitionState]
@@ -116,7 +116,7 @@ class ExpandableSearch extends Component<Props, State> {
                   <ArrowBackIcon />
                 </IconButton>
                 <Input
-                  type='search'
+                  type="search"
                   placeholder={placeholder}
                   fullWidth
                   disableUnderline
@@ -124,9 +124,9 @@ class ExpandableSearch extends Component<Props, State> {
                   onChange={this.handleValueChange}
                   inputRef={this.setSearchInputRef}
                   endAdornment={
-                    <InputAdornment position='end'>
+                    <InputAdornment position="end">
                       <IconButton
-                        aria-label='Clear search query'
+                        aria-label="Clear search query"
                         onClick={this.handleClickClear}
                       >
                         <ClearIcon />

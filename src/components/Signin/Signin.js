@@ -25,7 +25,7 @@ type Props = {
 }
 
 class Signin extends Component<Props> {
-  componentDidMount () {
+  componentDidMount() {
     if (ui) {
       ui.start('#firebaseui-auth-container', {
         // Firebase UI config options
@@ -41,20 +41,20 @@ class Signin extends Component<Props> {
     }
   }
 
-  render () {
+  render() {
     const { classes } = this.props
 
     return (
       <Fragment>
-        <AppBar title='Sign In' />
+        <AppBar title="Sign In" />
         <div className={classes.wrapper}>
-          <Typography variant='headline' align='center' gutterBottom>
+          <Typography variant="headline" align="center" gutterBottom>
             Material PWA
           </Typography>
-          <Typography align='center'>Test the Sign In!</Typography>
+          <Typography align="center">Test the Sign In!</Typography>
 
           <div
-            id='firebaseui-auth-container'
+            id="firebaseui-auth-container"
             className={classes.signinButtons}
           />
         </div>

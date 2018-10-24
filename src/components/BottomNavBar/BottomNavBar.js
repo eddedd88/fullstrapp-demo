@@ -29,7 +29,7 @@ type Props = {
 }
 
 export class BottomNavBar extends Component<Props> {
-  render () {
+  render() {
     const {
       items,
       classes,
