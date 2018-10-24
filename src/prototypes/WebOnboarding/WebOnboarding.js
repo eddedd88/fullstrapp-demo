@@ -29,11 +29,11 @@ const styles = theme => ({
   }
 })
 
-function getSteps () {
+function getSteps() {
   return ['Select campaign settings', 'Create an ad group', 'Create an ad']
 }
 
-function getStepContent (step) {
+function getStepContent(step) {
   switch (step) {
     case 0:
       return `For each ad campaign that you create, you can control how much
@@ -81,17 +81,17 @@ class WebOnboarding extends Component<Props, State> {
     })
   }
 
-  render () {
+  render() {
     const { onDone, classes } = this.props
     const steps = getSteps()
     const { activeStep } = this.state
 
     return (
       <Fragment>
-        <AppBar title='Getting Started' />
+        <AppBar title="Getting Started" />
 
         <CustomWrapper>
-          <Stepper activeStep={activeStep} orientation='vertical'>
+          <Stepper activeStep={activeStep} orientation="vertical">
             {steps.map((label, index) => {
               return (
                 <Step key={label}>
@@ -108,8 +108,8 @@ class WebOnboarding extends Component<Props, State> {
                           Back
                         </Button>
                         <Button
-                          variant='contained'
-                          color='primary'
+                          variant="contained"
+                          color="primary"
                           onClick={this.handleNext}
                           className={classes.button}
                         >
@@ -131,8 +131,8 @@ class WebOnboarding extends Component<Props, State> {
               <Button
                 onClick={onDone}
                 className={classes.button}
-                color='primary'
-                variant='contained'
+                color="primary"
+                variant="contained"
               >
                 Get Started
               </Button>

@@ -17,7 +17,7 @@ type Props = {|
 |}
 
 class FeedItemPage extends Component<Props> {
-  render () {
+  render() {
     const { title, backLink, ...rest } = this.props
 
     return (

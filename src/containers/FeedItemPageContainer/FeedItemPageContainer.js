@@ -18,7 +18,7 @@ class FeedItemPageContainer extends Component<Props, State> {
     feedItem: null
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const { feedId } = this.props.match.params
 
     if (feedId) {
@@ -37,14 +37,14 @@ class FeedItemPageContainer extends Component<Props, State> {
     }
   }
 
-  render () {
+  render() {
     const { feedItem } = this.state
-    const { match: { url } } = this.props
+    const {
+      match: { url }
+    } = this.props
     const backLink = url.includes(paths.feed) ? paths.feed : paths.profile
 
-    return feedItem
-      ? <FeedItemPage {...feedItem} backLink={backLink} />
-      : null
+    return feedItem ? <FeedItemPage {...feedItem} backLink={backLink} /> : null
   }
 }
 

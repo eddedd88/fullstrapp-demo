@@ -8,7 +8,7 @@ type State = {
 }
 
 class ProfilePageContainer extends Component<{||}, State> {
-  componentDidMount () {
+  componentDidMount() {
     analytics.pageViewed({
       pageTitle: 'Profile',
       pagePath: '/profile'
@@ -22,7 +22,7 @@ class ProfilePageContainer extends Component<{||}, State> {
     })
   }
 
-  render () {
+  render() {
     return <ProfilePage {...this.state} />
   }
 }

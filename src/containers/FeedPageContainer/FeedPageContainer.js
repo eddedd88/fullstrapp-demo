@@ -15,7 +15,7 @@ class FeedPageContainer extends Component<{||}, State> {
 
   unsubscribeObserver: ?() => void
 
-  componentDidMount () {
+  componentDidMount() {
     analytics.pageViewed({
       pageTitle: 'Feed',
       pagePath: '/feed'
@@ -33,7 +33,7 @@ class FeedPageContainer extends Component<{||}, State> {
       })
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     if (this.unsubscribeObserver) {
       this.unsubscribeObserver()
     }
@@ -51,7 +51,7 @@ class FeedPageContainer extends Component<{||}, State> {
     })
   }
 
-  render () {
+  render() {
     const { feedItems } = this.state
 
     return (

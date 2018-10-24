@@ -70,7 +70,7 @@ class SwipeableTextMobileStepper extends Component<Props, State> {
     this.setState({ activeStep })
   }
 
-  render () {
+  render() {
     const { classes } = this.props
     const { activeStep } = this.state
 
@@ -82,29 +82,29 @@ class SwipeableTextMobileStepper extends Component<Props, State> {
           className={classes.swipeableViews}
         >
           <div className={classes.stepWrapper}>
-            <img className={classes.img} src={Image1} alt='Mountains' />
+            <img className={classes.img} src={Image1} alt="Mountains" />
           </div>
 
           <div className={classes.stepWrapper}>
-            <img className={classes.img} src={Image2} alt='City Lights' />
+            <img className={classes.img} src={Image2} alt="City Lights" />
           </div>
 
           <div className={classes.stepWrapper}>
-            <img className={classes.img} src={Image3} alt='River' />
+            <img className={classes.img} src={Image3} alt="River" />
           </div>
 
           <div className={classes.stepWrapper}>
-            <img className={classes.img} src={Image4} alt='Beach' />
+            <img className={classes.img} src={Image4} alt="Beach" />
           </div>
         </SwipeableViews>
 
         <MobileStepper
           steps={maxSteps}
-          position='bottom'
+          position="bottom"
           activeStep={activeStep}
           nextButton={
             <Button
-              size='small'
+              size="small"
               onClick={this.handleNext}
               className={activeStep === maxSteps - 1 ? classes.doneButton : ''}
             >
@@ -114,7 +114,7 @@ class SwipeableTextMobileStepper extends Component<Props, State> {
           }
           backButton={
             <Button
-              size='small'
+              size="small"
               onClick={this.handleBack}
               disabled={activeStep === 0}
             >
