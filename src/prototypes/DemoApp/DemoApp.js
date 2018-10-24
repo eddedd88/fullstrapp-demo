@@ -28,7 +28,7 @@ class App extends Component<{||}, State> {
     })
   }
 
-  render () {
+  render() {
     const { needOnboarding } = this.state
 
     return needOnboarding ? (

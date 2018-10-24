@@ -10,7 +10,7 @@ type Props = {
 }
 
 class Onboarding extends Component<Props> {
-  render () {
+  render() {
     const { onDone, width } = this.props
 
     return isWidthUp('sm', width) ? (

@@ -33,7 +33,7 @@ class FeedItem extends Component<Props> {
     }
   }
 
-  render () {
+  render() {
     const { id, title, content, media, feedItemPagePath } = this.props
 
     return (
@@ -42,7 +42,7 @@ class FeedItem extends Component<Props> {
 
         <CardContent>
           {title && (
-            <Typography gutterBottom variant='headline'>
+            <Typography gutterBottom variant="headline">
               {title}
             </Typography>
           )}
@@ -52,8 +52,8 @@ class FeedItem extends Component<Props> {
         <CardActions>
           {feedItemPagePath && (
             <Button
-              size='small'
-              color='primary'
+              size="small"
+              color="primary"
               component={Link}
               to={feedItemPagePath.replace(':feedId', id.toString())}
             >
@@ -61,7 +61,7 @@ class FeedItem extends Component<Props> {
             </Button>
           )}
 
-          <Button size='small' color='primary' onClick={this.handleShareClick}>
+          <Button size="small" color="primary" onClick={this.handleShareClick}>
             Share
           </Button>
         </CardActions>

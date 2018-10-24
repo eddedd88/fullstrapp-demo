@@ -17,7 +17,7 @@ class GridPageContainer extends Component<{||}, State> {
     gridItems: []
   }
 
-  componentDidMount () {
+  componentDidMount() {
     analytics.pageViewed({
       pageTitle: 'Grid',
       pagePath: '/grid'
@@ -38,7 +38,7 @@ class GridPageContainer extends Component<{||}, State> {
       })
   }
 
-  render () {
+  render() {
     return <GridPage gridItems={this.state.gridItems} />
   }
 }
