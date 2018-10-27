@@ -42,7 +42,7 @@ class FeedItem extends Component<Props> {
 
         <CardContent>
           {title && (
-            <Typography gutterBottom variant="headline">
+            <Typography gutterBottom variant="h5">
               {title}
             </Typography>
           )}

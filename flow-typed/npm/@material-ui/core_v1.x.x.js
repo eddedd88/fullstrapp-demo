@@ -1,5 +1,5 @@
-// flow-typed signature: 6af704afba2a67567fb4f5cd047039fd
-// flow-typed version: 7deafd3517/@material-ui/core_v1.x.x/flow_>=v0.58.x
+// flow-typed signature: 619df58044315840b81388f7ab2bfa17
+// flow-typed version: 7451454136/@material-ui/core_v1.x.x/flow_>=v0.58.x
 
 declare module "@material-ui/core/AppBar/AppBar" {
   import type {ComponentType, Node} from "react";
@@ -2136,6 +2136,23 @@ declare module "@material-ui/core/styles/createTypography" {
   import type {Palette} from "@material-ui/core/styles/createPalette";
 
   declare export type TextStyle =
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "subtitle1"
+    | "subtitle2"
+    | "body1"
+    | "body2"
+    | "caption"
+    | "button"
+    | "overline"
+    | "srOnly"
+    | "inherit"
+
+    // deprecated
     | "display1"
     | "display2"
     | "display3"
@@ -2143,11 +2160,6 @@ declare module "@material-ui/core/styles/createTypography" {
     | "headline"
     | "title"
     | "subheading"
-    | "body1"
-    | "body2"
-    | "caption";
-
-  declare export type Style = TextStyle | "button";
 
   declare type FontStyle = {
     fontFamily: $PropertyType<CSSProperties, "fontFamily">,
@@ -2172,9 +2184,12 @@ declare module "@material-ui/core/styles/createTypography" {
     pxToRem: (px: number) => string
   };
 
-  declare export type Typography = { [style: Style]:  $Shape<TypographyStyle> } & FontStyle & TypographyUtils;
+  declare export type Typography = { [style: TextStyle]:  $Shape<TypographyStyle> } & FontStyle & TypographyUtils;
 
-  declare export type TypographyOptions = $Shape<{ [style: Style]:  $Shape<TypographyStyle> } & FontStyle>;
+  declare export type TypographyOptions = $Shape<{
+    [style: TextStyle]:  $Shape<TypographyStyle>,
+    useNextVariants: boolean
+  } & FontStyle>;
 
   declare module.exports: (
     palette: Palette,
@@ -2965,27 +2980,17 @@ declare module "@material-ui/core/Typography" {
 
 declare module "@material-ui/core/Typography/Typography" {
   import type {ComponentType, ElementType, Node} from "react";
+  import type {TextStyle as Variant} from "@material-ui/core/styles/createTypography"
 
   declare type Align = "inherit" | "left" | "center" | "right" | "justify";
   declare type Color =
     | "inherit"
     | "primary"
     | "secondary"
+    | "textPrimary"
     | "textSecondary"
     | "error"
     | "default";
-  declare type Variant =
-    | "display4"
-    | "display3"
-    | "display2"
-    | "display1"
-    | "headline"
-    | "title"
-    | "subheading"
-    | "body2"
-    | "body1"
-    | "caption"
-    | "button";
 
   declare module.exports: ComponentType<{
     align?: Align,
