@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^3.3.1",
+    "@material-ui/core": "^3.3.2",
     "@material-ui/icons": "^3.0.1",
     "@types/node": "^10.12.1",
     "@types/react": "^16.4.18",
@@ -19,7 +19,7 @@
     "react-scripts": "2.1.0",
     "react-swipeable-views": "^0.13.0",
     "react-transition-group": "^2.5.0",
-    "typescript": "^3.1.4"
+    "typescript": "^3.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -48,7 +48,7 @@
     "firebase-tools": "^6.0.0",
     "husky": "^1.1.2",
     "jest-localstorage-mock": "^2.3.0",
-    "lint-staged": "^7.3.0",
+    "lint-staged": "^8.0.4",
     "prettier": "^1.14.3",
     "react-test-renderer": "^16.6.0",
     "source-map-explorer": "^1.6.0"

@@ -8,6 +8,16 @@ import withMobileDialog, {
 } from '@material-ui/core/withMobileDialog'
 import FullScreenDialogAppBar from '../FullScreenDialogAppBar'
 import Button from '@material-ui/core/Button'
+import withStyles from '@material-ui/core/styles/withStyles'
+import { Theme } from '@material-ui/core/styles/createMuiTheme'
+
+const CustomDialogContent = withStyles((theme: Theme) => ({
+  root: {
+    [theme.breakpoints.down('md')]: {
+      marginTop: theme.spacing.unit * 10
+    }
+  }
+}))(DialogContent)
 
 type Props = {
   title: string
@@ -50,8 +60,9 @@ class FormDialog extends Component<Props> {
             />
           )}
 
-          <DialogTitle>{title}</DialogTitle>
-          <DialogContent>{children}</DialogContent>
+          {!fullScreen && <DialogTitle>{title}</DialogTitle>}
+
+          <CustomDialogContent>{children}</CustomDialogContent>
 
           {!fullScreen && (
             <DialogActions>
