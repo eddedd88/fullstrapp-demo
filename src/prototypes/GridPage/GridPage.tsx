@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
+import withWidth, { isWidthUp, WithWidth } from '@material-ui/core/withWidth'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
@@ -7,14 +7,17 @@ import IconButton from '@material-ui/core/IconButton'
 import InfoIcon from '@material-ui/icons/Info'
 import Wrapper from '../../components/Wrapper'
 import withStyles from '@material-ui/core/styles/withStyles'
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints'
+import createStyles from '@material-ui/core/styles/createStyles'
+import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import AppBar from '../../components/AppBar'
 
-const CustomWrapper = withStyles(theme => ({
-  root: {
-    marginTop: theme.spacing.unit
-  }
-}))(Wrapper)
+const CustomWrapper = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      marginTop: theme.spacing.unit
+    }
+  })
+)(Wrapper)
 
 type Props = {
   gridItems: Array<{
@@ -23,8 +26,7 @@ type Props = {
     subtitle: string
     imgSrc: string
   }>
-  width: Breakpoint
-}
+} & WithWidth
 
 class GridPage extends Component<Props> {
   render() {

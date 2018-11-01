@@ -4,12 +4,16 @@ import { FeedItemType } from '../../types/FeedItemType'
 import FeedItem from '../FeedItem'
 import Wrapper from '../../components/Wrapper'
 import withStyles from '@material-ui/core/styles/withStyles'
+import createStyles from '@material-ui/core/styles/createStyles'
+import { Theme } from '@material-ui/core/styles/createMuiTheme'
 
-const CustomWrapper = withStyles(theme => ({
-  root: {
-    marginTop: theme.spacing.unit
-  }
-}))(Wrapper)
+const CustomWrapper = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      marginTop: theme.spacing.unit
+    }
+  })
+)(Wrapper)
 
 type Props = FeedItemType & {
   backLink: string

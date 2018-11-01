@@ -2,7 +2,7 @@ import React, { Component, Fragment, ChangeEvent, FormEvent } from 'react'
 import FeedItem from '../FeedItem'
 import Button from '@material-ui/core/Button'
 import CreateIcon from '@material-ui/icons/Create'
-import withStyles from '@material-ui/core/styles/withStyles'
+import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles'
 import createStyles from '@material-ui/core/styles/createStyles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import Wrapper from '../../components/Wrapper'
@@ -24,15 +24,25 @@ const FabButton = withStyles((theme: Theme) =>
   })
 )(Button)
 
+const styles = (theme: Theme) =>
+  createStyles({
+    cameraButton: {
+      paddingLeft: 0,
+      marginTop: theme.spacing.unit * 2
+    },
+    buttonLeftIcon: {
+      marginRight: theme.spacing.unit,
+      paddingLeft: 0
+    },
+    feedItemWrapper: {
+      marginTop: theme.spacing.unit
+    }
+  })
+
 type Props = {
   feedItems: FeedItemType[]
   onAddFeedItem: (feedItem: FeedItemType) => void
-  classes: {
-    cameraButton: string
-    buttonLeftIcon: string
-    feedItemWrapper: string
-  }
-}
+} & WithStyles<typeof styles>
 
 type State = {
   open: boolean
@@ -142,16 +152,4 @@ class FeedPage extends Component<Props, State> {
   }
 }
 
-export default withStyles((theme: Theme) => ({
-  cameraButton: {
-    paddingLeft: 0,
-    marginTop: theme.spacing.unit * 2
-  },
-  buttonLeftIcon: {
-    marginRight: theme.spacing.unit,
-    paddingLeft: 0
-  },
-  feedItemWrapper: {
-    marginTop: theme.spacing.unit
-  }
-}))(FeedPage)
+export default withStyles(styles)(FeedPage)
