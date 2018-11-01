@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import withStyles from '@material-ui/core/styles/withStyles'
 import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 import AppBar from '@material-ui/core/AppBar'
@@ -15,7 +14,27 @@ import Wrapper from '../../components/Wrapper'
 import paths from '../../routes/paths'
 import Signin from '../../components/Signin'
 import Loading from '@material-ui/core/CircularProgress'
+import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles'
+import createStyles from '@material-ui/core/styles/createStyles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
+
+const styles = (theme: Theme) =>
+  createStyles({
+    name: {
+      marginBottom: theme.spacing.unit * 2
+    },
+    icon: {
+      verticalAlign: 'bottom',
+      marginRight: theme.spacing.unit * 2
+    },
+    userInfo: {
+      textDecoration: 'none',
+      padding: theme.spacing.unit
+    },
+    subheader: {
+      padding: theme.spacing.unit * 2
+    }
+  })
 
 type Props = {
   user?: {
@@ -23,48 +42,29 @@ type Props = {
     name: string
   }
   statusIsKnown: boolean
-  classes: {
-    name: string
-    icon: string
-    userInfo: string
-    subheader: string
-  }
-}
+} & WithStyles<typeof styles>
 
-const CustomWrapper = withStyles(theme => ({
-  root: {
-    marginTop: theme.spacing.unit * 2
-  }
-}))(Wrapper)
+const CustomWrapper = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      marginTop: theme.spacing.unit * 2
+    }
+  })
+)(Wrapper)
 
-const CustomAvatar = withStyles(theme => ({
-  root: {
-    height: theme.spacing.unit * 12,
-    width: theme.spacing.unit * 12,
-    margin: 'auto',
-    marginTop: theme.spacing.unit * 6,
-    marginBottom: theme.spacing.unit * 2,
-    color: '#fff',
-    backgroundColor: theme.palette.primary.light
-  }
-}))(Avatar)
-
-const styles = (theme: Theme) => ({
-  name: {
-    marginBottom: theme.spacing.unit * 2
-  },
-  icon: {
-    verticalAlign: 'bottom',
-    marginRight: theme.spacing.unit * 2
-  },
-  userInfo: {
-    textDecoration: 'none',
-    padding: theme.spacing.unit
-  },
-  subheader: {
-    padding: theme.spacing.unit * 2
-  }
-})
+const CustomAvatar = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      height: theme.spacing.unit * 12,
+      width: theme.spacing.unit * 12,
+      margin: 'auto',
+      marginTop: theme.spacing.unit * 6,
+      marginBottom: theme.spacing.unit * 2,
+      color: '#fff',
+      backgroundColor: theme.palette.primary.light
+    }
+  })
+)(Avatar)
 
 class ProfilePage extends Component<Props> {
   renderLink = (href: string) => (props: any) => <a {...props} href={href} />
