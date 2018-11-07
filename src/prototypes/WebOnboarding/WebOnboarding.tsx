@@ -88,10 +88,10 @@ class WebOnboarding extends Component<Props, State> {
 
     return (
       <Fragment>
-        <AppBar title="Getting Started" />
+        <AppBar title='Getting Started' />
 
         <CustomWrapper>
-          <Stepper activeStep={activeStep} orientation="vertical">
+          <Stepper activeStep={activeStep} orientation='vertical'>
             {steps.map((label, index) => {
               return (
                 <Step key={label}>
@@ -108,8 +108,8 @@ class WebOnboarding extends Component<Props, State> {
                           Back
                         </Button>
                         <Button
-                          variant="contained"
-                          color="primary"
+                          variant='contained'
+                          color='primary'
                           onClick={this.handleNext}
                           className={classes.button}
                         >
@@ -131,8 +131,8 @@ class WebOnboarding extends Component<Props, State> {
               <Button
                 onClick={onDone}
                 className={classes.button}
-                color="primary"
-                variant="contained"
+                color='primary'
+                variant='contained'
               >
                 Get Started
               </Button>

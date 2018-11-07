@@ -34,7 +34,7 @@ class GridPage extends Component<Props> {
 
     return (
       <Fragment>
-        <AppBar title="Image Grid" />
+        <AppBar title='Image Grid' />
         <CustomWrapper>
           <GridList cellHeight={isWidthUp('sm', width) ? 300 : 180}>
             {gridItems &&
