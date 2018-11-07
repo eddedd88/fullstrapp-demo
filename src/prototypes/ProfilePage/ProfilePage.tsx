@@ -83,14 +83,14 @@ class ProfilePage extends Component<Props> {
     // status is known and we have a logged in user
     return (
       <Fragment>
-        <AppBar position="static">
+        <AppBar position='static'>
           <CustomAvatar src={user.profilePicture} alt={'user.name'}>
             FN
           </CustomAvatar>
           <Typography
-            variant="title"
-            color="inherit"
-            align="center"
+            variant='title'
+            color='inherit'
+            align='center'
             className={classes.name}
           >
             {user.name}
@@ -120,8 +120,8 @@ class ProfilePage extends Component<Props> {
           </Card>
 
           <Typography
-            variant="subheading"
-            color="textSecondary"
+            variant='subheading'
+            color='textSecondary'
             className={classes.subheader}
           >
             Posts
@@ -129,19 +129,19 @@ class ProfilePage extends Component<Props> {
           <Grid container spacing={8}>
             <Grid item sm={6} xs={12}>
               <FeedItem
-                id="1"
+                id='1'
                 media={Image1}
-                title="Mountains"
-                content="Mountains are high."
+                title='Mountains'
+                content='Mountains are high.'
                 feedItemPagePath={paths.profileFeedItem}
               />
             </Grid>
             <Grid item sm={6} xs={12}>
               <FeedItem
-                id="2"
+                id='2'
                 media={Image2}
-                title="Lights"
-                content="Lights are bright."
+                title='Lights'
+                content='Lights are bright.'
                 feedItemPagePath={paths.profileFeedItem}
               />
             </Grid>

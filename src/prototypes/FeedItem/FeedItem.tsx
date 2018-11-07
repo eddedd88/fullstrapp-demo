@@ -51,7 +51,7 @@ class FeedItem extends Component<Props> {
 
         <CardContent>
           {title && (
-            <Typography gutterBottom variant="h5">
+            <Typography gutterBottom variant='h5'>
               {title}
             </Typography>
           )}
@@ -60,12 +60,12 @@ class FeedItem extends Component<Props> {
 
         <CardActions>
           {feedItemPagePath && (
-            <Button size="small" color="primary" component={this.renderLink}>
+            <Button size='small' color='primary' component={this.renderLink}>
               See More
             </Button>
           )}
 
-          <Button size="small" color="primary" onClick={this.handleShareClick}>
+          <Button size='small' color='primary' onClick={this.handleShareClick}>
             Share
           </Button>
         </CardActions>

@@ -97,7 +97,7 @@ class FeedPage extends Component<Props, State> {
 
     return (
       <Fragment>
-        <AppBar title="Feed" />
+        <AppBar title='Feed' />
         <Wrapper>
           {feedItems &&
             feedItems.map(feedItem => (
@@ -106,8 +106,8 @@ class FeedPage extends Component<Props, State> {
               </div>
             ))}
           <FabButton
-            variant="fab"
-            color="secondary"
+            variant='fab'
+            color='secondary'
             onClick={this.toggleDialog}
           >
             <CreateIcon />
@@ -116,13 +116,13 @@ class FeedPage extends Component<Props, State> {
           <FormDialog
             open={open}
             onClose={this.toggleDialog}
-            title="New Feed Item"
-            submitLabel="Post"
+            title='New Feed Item'
+            submitLabel='Post'
             onSubmit={this.handleSubmit}
           >
             <TextField
-              name="title"
-              label="Title"
+              name='title'
+              label='Title'
               onChange={this.handleInputChange}
               fullWidth
               autoFocus
@@ -130,17 +130,17 @@ class FeedPage extends Component<Props, State> {
             />
 
             <TextField
-              name="content"
+              name='content'
               label={`What's on your mind?`}
               onChange={this.handleInputChange}
               fullWidth
               multiline
-              margin="normal"
+              margin='normal'
               required
             />
 
-            <FileInput capture="camera">
-              <Button component="span" className={classes.cameraButton}>
+            <FileInput capture='camera'>
+              <Button component='span' className={classes.cameraButton}>
                 <PhotoCameraIcon className={classes.buttonLeftIcon} />
                 Add a Picture
               </Button>
