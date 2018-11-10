@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ProfilePage from '../../prototypes/ProfilePage'
-import analytics from '../../utils/analytics'
-import firebase from '../../utils/firebase'
+import analytics from '../../analytics'
+import firebase from '../../firebase'
 import { RouteComponentProps } from 'react-router'
 
 type State = {

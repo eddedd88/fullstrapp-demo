@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import FeedPage from '../../prototypes/FeedPage'
 import { FeedItemType } from '../../types/FeedItemType'
-import analytics from '../../utils/analytics'
-import firestore from '../../utils/firebase/firestore'
+import analytics from '../../analytics'
+import firestore from '../../firebase/firestore'
 import { RouteComponentProps } from 'react-router'
 
 type State = {
