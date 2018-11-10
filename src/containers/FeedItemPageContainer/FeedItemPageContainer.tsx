@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import FeedItemPage from '../../prototypes/FeedItemPage'
 import { RouteComponentProps } from 'react-router'
 import { FeedItemType } from '../../types/FeedItemType'
-import paths from '../../routes/paths'
-import firestore from '../../utils/firebase/firestore'
+import paths from '../../routes'
+import firestore from '../../firebase/firestore'
 
 type Props = RouteComponentProps<{
   feedId: string

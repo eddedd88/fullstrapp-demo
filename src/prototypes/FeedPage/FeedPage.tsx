@@ -12,7 +12,7 @@ import PhotoCameraIcon from '@material-ui/icons/PhotoCamera'
 import FileInput from '../../components/FileInput'
 import AppBar from '../../components/AppBar'
 import { FeedItemType } from '../../types/FeedItemType'
-import paths from '../../routes/paths'
+import paths from '../../routes'
 
 const FabButton = withStyles((theme: Theme) =>
   createStyles({
