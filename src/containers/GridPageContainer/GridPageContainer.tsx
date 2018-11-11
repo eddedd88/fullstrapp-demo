@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import GridPage from '../../prototypes/GridPage'
+import GridPage from '../../pages/GridPage'
 import analytics from '../../analytics'
 import firestore from '../../firebase/firestore'
 import { RouteComponentProps } from 'react-router'

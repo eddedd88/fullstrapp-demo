@@ -1,5 +1,5 @@
 import React, { Component, Fragment, ChangeEvent, FormEvent } from 'react'
-import FeedItem from '../FeedItem'
+import FeedItemCard from '../../components/FeedItemCard'
 import Button from '@material-ui/core/Button'
 import CreateIcon from '@material-ui/icons/Create'
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles'
@@ -11,8 +11,8 @@ import TextField from '@material-ui/core/TextField'
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera'
 import FileInput from '../../components/FileInput'
 import AppBar from '../../components/AppBar'
-import { FeedItemType } from '../../types/FeedItemType'
-import paths from '../../routes'
+import { FeedItem } from '../../models/FeedItem'
+import paths from '../routes'
 
 const FabButton = withStyles((theme: Theme) =>
   createStyles({
@@ -40,13 +40,13 @@ const styles = (theme: Theme) =>
   })
 
 type Props = {
-  feedItems: FeedItemType[]
-  onAddFeedItem: (feedItem: FeedItemType) => void
+  feedItems: FeedItem[]
+  onAddFeedItem: (feedItem: FeedItem) => void
 } & WithStyles<typeof styles>
 
 type State = {
   open: boolean
-  form: Partial<FeedItemType>
+  form: Partial<FeedItem>
 }
 
 class FeedPage extends Component<Props, State> {
@@ -102,7 +102,7 @@ class FeedPage extends Component<Props, State> {
           {feedItems &&
             feedItems.map(feedItem => (
               <div key={feedItem.id} className={classes.feedItemWrapper}>
-                <FeedItem {...feedItem} feedItemPagePath={paths.feedItem} />
+                <FeedItemCard {...feedItem} feedItemPagePath={paths.feedItem} />
               </div>
             ))}
           <FabButton

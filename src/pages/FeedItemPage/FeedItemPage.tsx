@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import AppBar from '../../components/AppBar'
-import { FeedItemType } from '../../types/FeedItemType'
-import FeedItem from '../FeedItem'
+import { FeedItem } from '../../models/FeedItem'
+import FeedItemCard from '../../components/FeedItemCard'
 import Wrapper from '../../components/Wrapper'
 import withStyles from '@material-ui/core/styles/withStyles'
 import createStyles from '@material-ui/core/styles/createStyles'
@@ -15,7 +15,7 @@ const CustomWrapper = withStyles((theme: Theme) =>
   })
 )(Wrapper)
 
-type Props = FeedItemType & {
+type Props = FeedItem & {
   backLink: string
 }
 
@@ -27,7 +27,7 @@ class FeedItemPage extends Component<Props> {
       <Fragment>
         <AppBar title={title} backLink={backLink} />
         <CustomWrapper>
-          <FeedItem title={title} {...rest} />
+          <FeedItemCard title={title} {...rest} />
         </CustomWrapper>
       </Fragment>
     )

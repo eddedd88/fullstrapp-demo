@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import FeedPage from '../../prototypes/FeedPage'
-import { FeedItemType } from '../../types/FeedItemType'
+import FeedPage from '../../pages/FeedPage'
+import { FeedItem } from '../../models/FeedItem'
 import analytics from '../../analytics'
 import firestore from '../../firebase/firestore'
 import { RouteComponentProps } from 'react-router'
 
 type State = {
-  feedItems: Partial<FeedItemType>[]
+  feedItems: Partial<FeedItem>[]
 }
 
 class FeedPageContainer extends Component<RouteComponentProps, State> {
@@ -40,7 +40,7 @@ class FeedPageContainer extends Component<RouteComponentProps, State> {
     }
   }
 
-  handleAddFeedItem = (newFeedItem: FeedItemType) => {
+  handleAddFeedItem = (newFeedItem: FeedItem) => {
     this.setState({
       feedItems: [
         ...this.state.feedItems,
