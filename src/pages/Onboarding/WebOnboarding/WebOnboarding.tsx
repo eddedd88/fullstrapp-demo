@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles'
 import createStyles from '@material-ui/core/styles/createStyles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
@@ -87,9 +87,8 @@ class WebOnboarding extends Component<Props, State> {
     const { activeStep } = this.state
 
     return (
-      <Fragment>
+      <>
         <AppBar title='Getting Started' />
-
         <CustomWrapper>
           <Stepper activeStep={activeStep} orientation='vertical'>
             {steps.map((label, index) => {
@@ -139,7 +138,7 @@ class WebOnboarding extends Component<Props, State> {
             </Paper>
           )}
         </CustomWrapper>
-      </Fragment>
+      </>
     )
   }
 }

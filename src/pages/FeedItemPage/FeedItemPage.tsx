@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import AppBar from '../../components/AppBar'
 import { FeedItem } from '../../models/FeedItem'
 import FeedItemCard from '../../components/FeedItemCard'
@@ -24,12 +24,12 @@ class FeedItemPage extends Component<Props> {
     const { title, backLink, ...rest } = this.props
 
     return (
-      <Fragment>
+      <>
         <AppBar title={title} backLink={backLink} />
         <CustomWrapper>
           <FeedItemCard title={title} {...rest} />
         </CustomWrapper>
-      </Fragment>
+      </>
     )
   }
 }

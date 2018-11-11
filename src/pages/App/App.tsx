@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import BottomNavBar from './BottomNavBar'
 import { Switch, Route, Redirect } from 'react-router'
 import FeedPageContainer from '../../containers/FeedPageContainer'
@@ -31,7 +31,7 @@ class App extends Component<{}, State> {
     return needOnboarding ? (
       <Onboarding onDone={this.handleFinishOnboarding} />
     ) : (
-      <Fragment>
+      <>
         <div style={{ marginBottom: 64 }}>
           <Switch>
             <Route path={paths.feedItem} component={FeedItemPageContainer} />
@@ -46,7 +46,7 @@ class App extends Component<{}, State> {
           </Switch>
         </div>
         <BottomNavBar />
-      </Fragment>
+      </>
     )
   }
 }
