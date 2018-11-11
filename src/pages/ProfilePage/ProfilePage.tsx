@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 import AppBar from '@material-ui/core/AppBar'
@@ -82,7 +82,7 @@ class ProfilePage extends Component<Props> {
 
     // status is known and we have a logged in user
     return (
-      <Fragment>
+      <>
         <AppBar position='static'>
           <CustomAvatar src={user.profilePicture} alt={'user.name'}>
             FN
@@ -147,7 +147,7 @@ class ProfilePage extends Component<Props> {
             </Grid>
           </Grid>
         </CustomWrapper>
-      </Fragment>
+      </>
     )
   }
 }

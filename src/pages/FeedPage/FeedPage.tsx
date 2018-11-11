@@ -1,4 +1,4 @@
-import React, { Component, Fragment, ChangeEvent, FormEvent } from 'react'
+import React, { Component, ChangeEvent, FormEvent } from 'react'
 import FeedItemCard from '../../components/FeedItemCard'
 import Button from '@material-ui/core/Button'
 import CreateIcon from '@material-ui/icons/Create'
@@ -96,7 +96,7 @@ class FeedPage extends Component<Props, State> {
     const { classes, feedItems } = this.props
 
     return (
-      <Fragment>
+      <>
         <AppBar title='Feed' />
         <Wrapper>
           {feedItems &&
@@ -147,7 +147,7 @@ class FeedPage extends Component<Props, State> {
             </FileInput>
           </FormDialog>
         </Wrapper>
-      </Fragment>
+      </>
     )
   }
 }

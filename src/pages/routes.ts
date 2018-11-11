@@ -1,4 +1,4 @@
-const paths = {
+const routes = {
   feed: '/feed',
   feedItem: '/feed/:feedId',
   grid: '/grid',
@@ -6,4 +6,4 @@ const paths = {
   profileFeedItem: '/profile/:feedId'
 }
 
-export default paths
+export default routes

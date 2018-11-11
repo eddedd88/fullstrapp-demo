@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles'
 import createStyles from '@material-ui/core/styles/createStyles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
@@ -72,7 +72,7 @@ class SwipeableTextMobileStepper extends Component<Props, State> {
     const { activeStep } = this.state
 
     return (
-      <Fragment>
+      <>
         <SwipeableViews
           index={activeStep}
           onChangeIndex={this.handleStepChange}
@@ -120,7 +120,7 @@ class SwipeableTextMobileStepper extends Component<Props, State> {
             </Button>
           }
         />
-      </Fragment>
+      </>
     )
   }
 }

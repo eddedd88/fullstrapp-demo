@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import withWidth, { isWidthUp, WithWidth } from '@material-ui/core/withWidth'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
@@ -33,7 +33,7 @@ class GridPage extends Component<Props> {
     const { gridItems, width } = this.props
 
     return (
-      <Fragment>
+      <>
         <AppBar title='Image Grid' />
         <CustomWrapper>
           <GridList cellHeight={isWidthUp('sm', width) ? 300 : 180}>
@@ -54,7 +54,7 @@ class GridPage extends Component<Props> {
               ))}
           </GridList>
         </CustomWrapper>
-      </Fragment>
+      </>
     )
   }
 }
