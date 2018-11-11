@@ -4,14 +4,14 @@ import Avatar from '@material-ui/core/Avatar'
 import AppBar from '@material-ui/core/AppBar'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import FeedItem from '../FeedItem'
+import FeedItemCard from '../../components/FeedItemCard'
 import Image1 from '../../assets/cassie-boca-293379-unsplash.jpg'
 import Image2 from '../../assets/dan-freeman-404566-unsplash.jpg'
 import EmailIcon from '@material-ui/icons/Email'
 import PhoneIcon from '@material-ui/icons/Phone'
 import Grid from '@material-ui/core/Grid'
 import Wrapper from '../../components/Wrapper'
-import paths from '../../routes'
+import paths from '../routes'
 import Signin from '../../components/Signin'
 import Loading from '@material-ui/core/CircularProgress'
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles'
@@ -128,7 +128,7 @@ class ProfilePage extends Component<Props> {
           </Typography>
           <Grid container spacing={8}>
             <Grid item sm={6} xs={12}>
-              <FeedItem
+              <FeedItemCard
                 id='1'
                 media={Image1}
                 title='Mountains'
@@ -137,7 +137,7 @@ class ProfilePage extends Component<Props> {
               />
             </Grid>
             <Grid item sm={6} xs={12}>
-              <FeedItem
+              <FeedItemCard
                 id='2'
                 media={Image2}
                 title='Lights'

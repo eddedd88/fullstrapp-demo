@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ProfilePage from '../../prototypes/ProfilePage'
+import ProfilePage from '../../pages/ProfilePage'
 import analytics from '../../analytics'
 import firebase from '../../firebase'
 import { RouteComponentProps } from 'react-router'

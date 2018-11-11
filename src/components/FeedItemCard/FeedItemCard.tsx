@@ -5,7 +5,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import CardActions from '@material-ui/core/CardActions'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
-import { FeedItemType } from '../../types/FeedItemType'
+import { FeedItem } from '../../models/FeedItem'
 import { Link } from 'react-router-dom'
 import withStyles from '@material-ui/core/styles/withStyles'
 import createStyles from '@material-ui/core/styles/createStyles'
@@ -20,9 +20,9 @@ const CustomCardMedia = withStyles(
 
 type Props = {
   feedItemPagePath?: string
-} & FeedItemType
+} & FeedItem
 
-class FeedItem extends Component<Props> {
+class FeedItemCard extends Component<Props> {
   handleShareClick = () => {
     const { id, title, content } = this.props
 
@@ -74,4 +74,4 @@ class FeedItem extends Component<Props> {
   }
 }
 
-export default FeedItem
+export default FeedItemCard

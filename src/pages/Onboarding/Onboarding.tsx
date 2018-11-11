@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import withWidth, { isWidthUp, WithWidth } from '@material-ui/core/withWidth'
-import MobileOnboarding from '../MobileOnboarding'
-import WebOnboarding from '../WebOnboarding'
+import MobileOnboarding from './MobileOnboarding'
+import WebOnboarding from './WebOnboarding'
 
 type Props = {
   onDone: () => void

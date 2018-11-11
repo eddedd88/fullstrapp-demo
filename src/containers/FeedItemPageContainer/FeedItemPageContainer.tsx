@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import FeedItemPage from '../../prototypes/FeedItemPage'
+import FeedItemPage from '../../pages/FeedItemPage'
 import { RouteComponentProps } from 'react-router'
-import { FeedItemType } from '../../types/FeedItemType'
-import paths from '../../routes'
+import { FeedItem } from '../../models/FeedItem'
+import paths from '../../pages/routes'
 import firestore from '../../firebase/firestore'
 
 type Props = RouteComponentProps<{
@@ -10,7 +10,7 @@ type Props = RouteComponentProps<{
 }>
 
 type State = {
-  feedItem: Partial<FeedItemType> | null
+  feedItem: Partial<FeedItem> | null
 }
 
 class FeedItemPageContainer extends Component<Props, State> {

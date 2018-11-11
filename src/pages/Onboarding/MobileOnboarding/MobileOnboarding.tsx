@@ -7,10 +7,10 @@ import Button from '@material-ui/core/Button'
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import SwipeableViews from 'react-swipeable-views'
-import Image1 from '../../assets/cassie-boca-293379-unsplash.jpg'
-import Image2 from '../../assets/dan-freeman-404566-unsplash.jpg'
-import Image3 from '../../assets/fabio-mangione-236846-unsplash.jpg'
-import Image4 from '../../assets/tommy-lisbin-276996-unsplash.jpg'
+import Image1 from '../../../assets/cassie-boca-293379-unsplash.jpg'
+import Image2 from '../../../assets/dan-freeman-404566-unsplash.jpg'
+import Image3 from '../../../assets/fabio-mangione-236846-unsplash.jpg'
+import Image4 from '../../../assets/tommy-lisbin-276996-unsplash.jpg'
 
 const maxSteps = 4
 const styles = (theme: Theme) =>

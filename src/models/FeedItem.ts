@@ -1,4 +1,4 @@
-export type FeedItemType = {
+export type FeedItem = {
   id: string
   title: string
   content: string

@@ -1,22 +1,19 @@
 import React, { Component, Fragment } from 'react'
-import BottomNavBar from '../../components/BottomNavBar'
+import BottomNavBar from './BottomNavBar'
 import { Switch, Route, Redirect } from 'react-router'
 import FeedPageContainer from '../../containers/FeedPageContainer'
 import GridPageContainer from '../../containers/GridPageContainer'
 import ProfilePageContainer from '../../containers/ProfilePageContainer'
-import paths from '../../routes'
+import paths from '../routes'
 import Onboarding from '../Onboarding'
 import FeedItemPageContainer from '../../containers/FeedItemPageContainer'
-import GridIcon from '@material-ui/icons/GridOn'
-import PersonIcon from '@material-ui/icons/Person'
-import LocationCityIcon from '@material-ui/icons/LocationCity'
 
 const onboardingKey = 'alreadyOnboarded'
 type State = {
   needOnboarding: boolean
 }
 
-class DemoApp extends Component<{}, State> {
+class App extends Component<{}, State> {
   state = {
     needOnboarding: !window.localStorage.getItem(onboardingKey)
   }
@@ -48,28 +45,10 @@ class DemoApp extends Component<{}, State> {
             <Redirect to={paths.feed} />
           </Switch>
         </div>
-        <BottomNavBar
-          items={[
-            {
-              label: 'Feed',
-              icon: <LocationCityIcon />,
-              path: paths.feed
-            },
-            {
-              label: 'Grid',
-              icon: <GridIcon />,
-              path: paths.grid
-            },
-            {
-              label: 'Profile',
-              icon: <PersonIcon />,
-              path: paths.profile
-            }
-          ]}
-        />
+        <BottomNavBar />
       </Fragment>
     )
   }
 }
 
-export default DemoApp
+export default App
