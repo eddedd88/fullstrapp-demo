@@ -9,7 +9,7 @@ import Wrapper from '../../components/Wrapper'
 import withStyles from '@material-ui/core/styles/withStyles'
 import createStyles from '@material-ui/core/styles/createStyles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
-import AppBar from '../../components/AppBar'
+import MainAppBar from '../../components/MainAppBar'
 import AppBarTitle from '../../components/AppBarTitle'
 
 const CustomWrapper = withStyles((theme: Theme) =>
@@ -35,9 +35,9 @@ class GridPage extends Component<Props> {
 
     return (
       <>
-        <AppBar>
+        <MainAppBar>
           <AppBarTitle>Image Grid</AppBarTitle>
-        </AppBar>
+        </MainAppBar>
         <CustomWrapper>
           <GridList cellHeight={isWidthUp('sm', width) ? 300 : 180}>
             {gridItems &&

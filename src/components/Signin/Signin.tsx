@@ -6,7 +6,7 @@ import firebase from '../../firebase'
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 import Typography from '@material-ui/core/Typography'
-import AppBar from '../AppBar'
+import MainAppBar from '../AppBar'
 import AppBarTitle from '../AppBarTitle'
 
 const ui = new firebaseui.auth.AuthUI(firebase.auth())
@@ -65,9 +65,9 @@ class Signin extends Component<Props> {
 
     return (
       <>
-        <AppBar>
+        <MainAppBar>
           <AppBarTitle>Signin</AppBarTitle>
-        </AppBar>
+        </MainAppBar>
         <div className={classes.wrapper}>
           <Typography variant='h5' align='center' gutterBottom>
             fullstrapp

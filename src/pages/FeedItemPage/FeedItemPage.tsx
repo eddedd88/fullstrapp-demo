@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import AppBar from '../../components/AppBar'
 import { FeedItem } from '../../models/FeedItem'
 import FeedItemCard from '../../components/FeedItemCard'
 import Wrapper from '../../components/Wrapper'
@@ -10,6 +9,7 @@ import AppBarTitle from '../../components/AppBarTitle'
 import { Link } from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import MainAppBar from '../../components/MainAppBar'
 
 const CustomWrapper = withStyles((theme: Theme) =>
   createStyles({
@@ -29,7 +29,7 @@ class FeedItemPage extends Component<Props> {
 
     return (
       <>
-        <AppBar>
+        <MainAppBar>
           <IconButton
             color='inherit'
             component={(props: any) => <Link {...props} to={backLink} />}
@@ -38,7 +38,7 @@ class FeedItemPage extends Component<Props> {
           </IconButton>
 
           <AppBarTitle>{title}</AppBarTitle>
-        </AppBar>
+        </MainAppBar>
 
         <CustomWrapper>
           <FeedItemCard title={title} {...rest} />

@@ -14,6 +14,8 @@ import AppBar from '../../components/AppBar'
 import AppBarTitle from '../../components/AppBarTitle'
 import { FeedItem } from '../../models/FeedItem'
 import paths from '../routes'
+import Fab from '@material-ui/core/Fab'
+import MainAppBar from '../../components/MainAppBar'
 
 const FabButton = withStyles((theme: Theme) =>
   createStyles({
@@ -23,7 +25,7 @@ const FabButton = withStyles((theme: Theme) =>
       right: theme.spacing.unit * 2
     }
   })
-)(Button)
+)(Fab)
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -98,9 +100,9 @@ class FeedPage extends Component<Props, State> {
 
     return (
       <>
-        <AppBar>
+        <MainAppBar>
           <AppBarTitle>Feed</AppBarTitle>
-        </AppBar>
+        </MainAppBar>
         <Wrapper>
           {feedItems &&
             feedItems.map(feedItem => (
@@ -108,11 +110,7 @@ class FeedPage extends Component<Props, State> {
                 <FeedItemCard {...feedItem} feedItemPagePath={paths.feedItem} />
               </div>
             ))}
-          <FabButton
-            variant='fab'
-            color='secondary'
-            onClick={this.toggleDialog}
-          >
+          <FabButton color='secondary' onClick={this.toggleDialog}>
             <CreateIcon />
           </FabButton>
 

@@ -67,7 +67,7 @@ class FormDialog extends Component<Props> {
         >
           {fullScreen && (
             <AppBar>
-              <IconButton onClick={onClose}>
+              <IconButton onClick={onClose} color='inherit'>
                 <CloseIcon />
               </IconButton>
 
