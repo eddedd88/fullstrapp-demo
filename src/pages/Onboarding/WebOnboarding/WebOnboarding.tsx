@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Wrapper from '../../../components/Wrapper'
 import AppBar from '../../../components/AppBar'
+import AppBarTitle from '../../../components/AppBarTitle'
 
 const CustomWrapper = withStyles((theme: Theme) =>
   createStyles({
@@ -88,7 +89,9 @@ class WebOnboarding extends Component<Props, State> {
 
     return (
       <>
-        <AppBar title='Getting Started' />
+        <AppBar>
+          <AppBarTitle>Getting Started</AppBarTitle>
+        </AppBar>
         <CustomWrapper>
           <Stepper activeStep={activeStep} orientation='vertical'>
             {steps.map((label, index) => {

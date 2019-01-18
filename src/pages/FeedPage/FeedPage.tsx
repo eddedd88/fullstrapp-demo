@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField'
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera'
 import FileInput from '../../components/FileInput'
 import AppBar from '../../components/AppBar'
+import AppBarTitle from '../../components/AppBarTitle'
 import { FeedItem } from '../../models/FeedItem'
 import paths from '../routes'
 
@@ -97,7 +98,9 @@ class FeedPage extends Component<Props, State> {
 
     return (
       <>
-        <AppBar title='Feed' />
+        <AppBar>
+          <AppBarTitle>Feed</AppBarTitle>
+        </AppBar>
         <Wrapper>
           {feedItems &&
             feedItems.map(feedItem => (
