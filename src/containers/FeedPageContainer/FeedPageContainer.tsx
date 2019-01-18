@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import FeedPage from '../../pages/FeedPage'
-import { FeedItem } from '../../models/FeedItem'
+import FeedItem from '../../models/FeedItem'
 import analytics from '../../analytics'
 import firestore from '../../firebase/firestore'
 import { RouteComponentProps } from 'react-router'

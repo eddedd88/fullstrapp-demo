@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FeedItem } from '../../models/FeedItem'
+import FeedItem from '../../models/FeedItem'
 import FeedItemCard from '../../components/FeedItemCard'
 import Wrapper from '../../components/Wrapper'
 import withStyles from '@material-ui/core/styles/withStyles'
