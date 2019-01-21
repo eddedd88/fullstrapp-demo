@@ -10,9 +10,11 @@ import FormDialog from '../../components/FormDialog'
 import TextField from '@material-ui/core/TextField'
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera'
 import FileInput from '../../components/FileInput'
-import AppBar from '../../components/AppBar'
-import { FeedItem } from '../../models/FeedItem'
+import AppBarTitle from '../../components/AppBarTitle'
+import FeedItem from '../../models/FeedItem'
 import paths from '../routes'
+import Fab from '@material-ui/core/Fab'
+import MainAppBar from '../../components/MainAppBar'
 
 const FabButton = withStyles((theme: Theme) =>
   createStyles({
@@ -22,7 +24,7 @@ const FabButton = withStyles((theme: Theme) =>
       right: theme.spacing.unit * 2
     }
   })
-)(Button)
+)(Fab)
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -97,7 +99,9 @@ class FeedPage extends Component<Props, State> {
 
     return (
       <>
-        <AppBar title='Feed' />
+        <MainAppBar>
+          <AppBarTitle>Feed</AppBarTitle>
+        </MainAppBar>
         <Wrapper>
           {feedItems &&
             feedItems.map(feedItem => (
@@ -105,11 +109,7 @@ class FeedPage extends Component<Props, State> {
                 <FeedItemCard {...feedItem} feedItemPagePath={paths.feedItem} />
               </div>
             ))}
-          <FabButton
-            variant='fab'
-            color='secondary'
-            onClick={this.toggleDialog}
-          >
+          <FabButton color='secondary' onClick={this.toggleDialog}>
             <CreateIcon />
           </FabButton>
 

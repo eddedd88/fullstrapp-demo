@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import FeedItemPage from '../../pages/FeedItemPage'
 import { RouteComponentProps } from 'react-router'
-import { FeedItem } from '../../models/FeedItem'
+import FeedItem from '../../models/FeedItem'
 import paths from '../../pages/routes'
 import firestore from '../../firebase/firestore'
 
