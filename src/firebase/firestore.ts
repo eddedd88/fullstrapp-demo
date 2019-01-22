@@ -10,6 +10,7 @@ interface CustomFirestore extends firebase.firestore.Firestore {
 
 const firestore: CustomFirestore = firebase.firestore()
 
+// support offline mode
 firestore.enablePersistence()
 window.addEventListener('offline', () => firestore.disableNetwork())
 window.addEventListener('online', () => firestore.enableNetwork())
