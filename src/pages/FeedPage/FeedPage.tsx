@@ -1,4 +1,9 @@
-import React, { Component, ChangeEvent, FormEvent } from 'react'
+import React, {
+  FunctionComponent,
+  ChangeEvent,
+  FormEvent,
+  useState
+} from 'react'
 import FeedItemCard from '../../components/FeedItemCard'
 import Button from '@material-ui/core/Button'
 import CreateIcon from '@material-ui/icons/Create'
@@ -51,105 +56,91 @@ type State = {
   form: Partial<FeedItem>
 }
 
-class FeedPage extends Component<Props, State> {
-  state = {
-    open: false,
-    form: {
-      id: '10',
+const FeedPage: FunctionComponent<Props> = props => {
+  const [open, setOpen] = useState<boolean>(false)
+  const [form, setForm] = useState<FeedItem>({
+    id: '10',
+    title: '',
+    content: '',
+    media: ''
+  })
+
+  const toggleDialog = () => {
+    setOpen(!open)
+  }
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    setOpen(false)
+    setForm({
+      id: (props.feedItems.length * 10).toString(),
       title: '',
       content: '',
       media: ''
-    }
+    })
+
+    props.onAddFeedItem(form)
   }
 
-  toggleDialog = () => {
-    this.setState({
-      open: !this.state.open
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
     })
   }
 
-  handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
+  return (
+    <>
+      <MainAppBar>
+        <AppBarTitle>Feed</AppBarTitle>
+      </MainAppBar>
+      <Wrapper>
+        {props.feedItems &&
+          props.feedItems.map(feedItem => (
+            <div key={feedItem.id} className={props.classes.feedItemWrapper}>
+              <FeedItemCard {...feedItem} feedItemPagePath={paths.feedItem} />
+            </div>
+          ))}
+        <FabButton color='secondary' onClick={toggleDialog}>
+          <CreateIcon />
+        </FabButton>
 
-    this.setState({
-      open: false,
-      form: {
-        id: (this.props.feedItems.length * 10).toString(),
-        title: '',
-        content: '',
-        media: ''
-      }
-    })
+        <FormDialog
+          open={open}
+          onClose={toggleDialog}
+          title='New Feed Item'
+          submitLabel='Post'
+          onSubmit={handleSubmit}
+        >
+          <TextField
+            name='title'
+            label='Title'
+            onChange={handleInputChange}
+            fullWidth
+            autoFocus
+            required
+          />
 
-    this.props.onAddFeedItem(this.state.form)
-  }
+          <TextField
+            name='content'
+            label={`What's on your mind?`}
+            onChange={handleInputChange}
+            fullWidth
+            multiline
+            margin='normal'
+            required
+          />
 
-  handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    this.setState({
-      form: {
-        ...this.state.form,
-        [e.target.name]: e.target.value
-      }
-    })
-  }
-
-  render() {
-    const { open } = this.state
-    const { classes, feedItems } = this.props
-
-    return (
-      <>
-        <MainAppBar>
-          <AppBarTitle>Feed</AppBarTitle>
-        </MainAppBar>
-        <Wrapper>
-          {feedItems &&
-            feedItems.map(feedItem => (
-              <div key={feedItem.id} className={classes.feedItemWrapper}>
-                <FeedItemCard {...feedItem} feedItemPagePath={paths.feedItem} />
-              </div>
-            ))}
-          <FabButton color='secondary' onClick={this.toggleDialog}>
-            <CreateIcon />
-          </FabButton>
-
-          <FormDialog
-            open={open}
-            onClose={this.toggleDialog}
-            title='New Feed Item'
-            submitLabel='Post'
-            onSubmit={this.handleSubmit}
-          >
-            <TextField
-              name='title'
-              label='Title'
-              onChange={this.handleInputChange}
-              fullWidth
-              autoFocus
-              required
-            />
-
-            <TextField
-              name='content'
-              label={`What's on your mind?`}
-              onChange={this.handleInputChange}
-              fullWidth
-              multiline
-              margin='normal'
-              required
-            />
-
-            <FileInput capture='camera'>
-              <Button component='span' className={classes.cameraButton}>
-                <PhotoCameraIcon className={classes.buttonLeftIcon} />
-                Add a Picture
-              </Button>
-            </FileInput>
-          </FormDialog>
-        </Wrapper>
-      </>
-    )
-  }
+          <FileInput capture='camera'>
+            <Button component='span' className={props.classes.cameraButton}>
+              <PhotoCameraIcon className={props.classes.buttonLeftIcon} />
+              Add a Picture
+            </Button>
+          </FileInput>
+        </FormDialog>
+      </Wrapper>
+    </>
+  )
 }
 
 export default withStyles(styles)(FeedPage)

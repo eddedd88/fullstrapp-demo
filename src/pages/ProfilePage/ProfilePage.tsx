@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { FunctionComponent } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 import AppBar from '@material-ui/core/AppBar'
@@ -66,90 +66,88 @@ const CustomAvatar = withStyles((theme: Theme) =>
   })
 )(Avatar)
 
-class ProfilePage extends Component<Props> {
-  renderLink = (href: string) => (props: any) => <a {...props} href={href} />
+const ProfilePage: FunctionComponent<Props> = props => {
+  const renderLink = (href: string) => (linkProps: any) => (
+    <a {...linkProps} href={href} />
+  )
 
-  render() {
-    const { statusIsKnown, user, classes } = this.props
-
-    if (!statusIsKnown) {
-      return <Loading />
-    }
-
-    if (!user) {
-      return <Signin />
-    }
-
-    // status is known and we have a logged in user
-    return (
-      <>
-        <AppBar position='static'>
-          <CustomAvatar src={user.profilePicture} alt={'user.name'}>
-            FN
-          </CustomAvatar>
-          <Typography
-            variant='title'
-            color='inherit'
-            align='center'
-            className={classes.name}
-          >
-            {user.name}
-          </Typography>
-        </AppBar>
-
-        <CustomWrapper>
-          <Card>
-            <CardContent>
-              <Typography
-                component={this.renderLink('mailto:test@test.com')}
-                className={classes.userInfo}
-                gutterBottom
-              >
-                <EmailIcon className={classes.icon} />
-                test@test.com
-              </Typography>
-
-              <Typography
-                component={this.renderLink('tel:123-123-1234')}
-                className={classes.userInfo}
-              >
-                <PhoneIcon className={classes.icon} />
-                123-123-1234
-              </Typography>
-            </CardContent>
-          </Card>
-
-          <Typography
-            variant='subheading'
-            color='textSecondary'
-            className={classes.subheader}
-          >
-            Posts
-          </Typography>
-          <Grid container spacing={8}>
-            <Grid item sm={6} xs={12}>
-              <FeedItemCard
-                id='1'
-                media={Image1}
-                title='Mountains'
-                content='Mountains are high.'
-                feedItemPagePath={paths.profileFeedItem}
-              />
-            </Grid>
-            <Grid item sm={6} xs={12}>
-              <FeedItemCard
-                id='2'
-                media={Image2}
-                title='Lights'
-                content='Lights are bright.'
-                feedItemPagePath={paths.profileFeedItem}
-              />
-            </Grid>
-          </Grid>
-        </CustomWrapper>
-      </>
-    )
+  if (!props.statusIsKnown) {
+    return <Loading />
   }
+
+  if (!props.user) {
+    return <Signin />
+  }
+
+  // status is known and we have a logged in user
+  return (
+    <>
+      <AppBar position='static'>
+        <CustomAvatar src={props.user.profilePicture} alt={'user.name'}>
+          FN
+        </CustomAvatar>
+        <Typography
+          variant='title'
+          color='inherit'
+          align='center'
+          className={props.classes.name}
+        >
+          {props.user.name}
+        </Typography>
+      </AppBar>
+
+      <CustomWrapper>
+        <Card>
+          <CardContent>
+            <Typography
+              component={renderLink('mailto:test@test.com')}
+              className={props.classes.userInfo}
+              gutterBottom
+            >
+              <EmailIcon className={props.classes.icon} />
+              test@test.com
+            </Typography>
+
+            <Typography
+              component={renderLink('tel:123-123-1234')}
+              className={props.classes.userInfo}
+            >
+              <PhoneIcon className={props.classes.icon} />
+              123-123-1234
+            </Typography>
+          </CardContent>
+        </Card>
+
+        <Typography
+          variant='subheading'
+          color='textSecondary'
+          className={props.classes.subheader}
+        >
+          Posts
+        </Typography>
+        <Grid container spacing={8}>
+          <Grid item sm={6} xs={12}>
+            <FeedItemCard
+              id='1'
+              media={Image1}
+              title='Mountains'
+              content='Mountains are high.'
+              feedItemPagePath={paths.profileFeedItem}
+            />
+          </Grid>
+          <Grid item sm={6} xs={12}>
+            <FeedItemCard
+              id='2'
+              media={Image2}
+              title='Lights'
+              content='Lights are bright.'
+              feedItemPagePath={paths.profileFeedItem}
+            />
+          </Grid>
+        </Grid>
+      </CustomWrapper>
+    </>
+  )
 }
 
 export default withStyles(styles)(ProfilePage)
