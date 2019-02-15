@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import FeedItemPage from '../../pages/FeedItemPage'
 import { RouteComponentProps } from 'react-router'
 import FeedItem from '../../models/FeedItem'
@@ -9,44 +9,28 @@ type Props = RouteComponentProps<{
   feedId: string
 }>
 
-type State = {
-  feedItem: Partial<FeedItem> | null
-}
+const FeedItemPageContainer: FunctionComponent<Props> = props => {
+  const [feedItem, setFeedItem] = useState<FeedItem | null>(null)
 
-class FeedItemPageContainer extends Component<Props, State> {
-  state = {
-    feedItem: null,
-    test: ''
-  }
-
-  componentDidMount() {
-    const { feedId } = this.props.match.params
-
-    if (feedId) {
-      firestore
+  useEffect(() => {
+    if (props.match.params.feedId) {
+      return firestore
         .collection('posts')
-        .doc(feedId)
-        .get()
-        .then(snapshot => {
-          this.setState({
-            feedItem: {
-              id: snapshot.id,
-              ...snapshot.data()
-            }
+        .doc(props.match.params.feedId)
+        .onSnapshot(snapshot => {
+          setFeedItem({
+            id: snapshot.id,
+            ...(snapshot.data() as FeedItem)
           })
         })
     }
-  }
+  }, [props.match.params.feedId])
 
-  render() {
-    const { feedItem } = this.state
-    const {
-      match: { url }
-    } = this.props
-    const backLink = url.includes(paths.feed) ? paths.feed : paths.profile
+  const backLink = props.match.url.includes(paths.feed)
+    ? paths.feed
+    : paths.profile
 
-    return feedItem ? <FeedItemPage {...feedItem} backLink={backLink} /> : null
-  }
+  return feedItem ? <FeedItemPage {...feedItem} backLink={backLink} /> : null
 }
 
 export default FeedItemPageContainer

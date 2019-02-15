@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { FunctionComponent } from 'react'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -22,56 +22,52 @@ type Props = {
   feedItemPagePath?: string
 } & FeedItem
 
-class FeedItemCard extends Component<Props> {
-  handleShareClick = () => {
-    const { id, title, content } = this.props
-
+const FeedItemCard: FunctionComponent<Props> = props => {
+  const handleShareClick = () => {
     if (navigator.share) {
       navigator.share({
-        title,
-        text: content,
-        url: `${process.env.PUBLIC_URL || ''}/feed/${id}`
+        title: props.title,
+        text: props.content,
+        url: `${process.env.PUBLIC_URL || ''}/feed/${props.id}`
       })
     }
   }
 
-  renderLink = (props: any) => {
-    const { id, feedItemPagePath } = this.props
-
-    return feedItemPagePath ? (
-      <Link {...props} to={feedItemPagePath.replace(':feedId', id)} />
+  const renderLink = (linkProps: any) => {
+    return props.feedItemPagePath ? (
+      <Link
+        {...linkProps}
+        to={props.feedItemPagePath.replace(':feedId', props.id)}
+      />
     ) : null
   }
-  render() {
-    const { id, title, content, media, feedItemPagePath } = this.props
 
-    return (
-      <Card>
-        {media && <CustomCardMedia image={media} />}
+  return (
+    <Card>
+      {props.media && <CustomCardMedia image={props.media} />}
 
-        <CardContent>
-          {title && (
-            <Typography gutterBottom variant='h5'>
-              {title}
-            </Typography>
-          )}
-          <Typography>{content}</Typography>
-        </CardContent>
+      <CardContent>
+        {props.title && (
+          <Typography gutterBottom variant='h5'>
+            {props.title}
+          </Typography>
+        )}
+        <Typography>{props.content}</Typography>
+      </CardContent>
 
-        <CardActions>
-          {feedItemPagePath && (
-            <Button size='small' color='primary' component={this.renderLink}>
-              See More
-            </Button>
-          )}
-
-          <Button size='small' color='primary' onClick={this.handleShareClick}>
-            Share
+      <CardActions>
+        {props.feedItemPagePath && (
+          <Button size='small' color='primary' component={renderLink}>
+            See More
           </Button>
-        </CardActions>
-      </Card>
-    )
-  }
+        )}
+
+        <Button size='small' color='primary' onClick={handleShareClick}>
+          Share
+        </Button>
+      </CardActions>
+    </Card>
+  )
 }
 
 export default FeedItemCard
