@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { FunctionComponent } from 'react'
 import FeedItem from '../../models/FeedItem'
 import FeedItemCard from '../../components/FeedItemCard'
 import Wrapper from '../../components/Wrapper'
@@ -23,29 +23,27 @@ type Props = FeedItem & {
   backLink: string
 }
 
-class FeedItemPage extends Component<Props> {
-  render() {
-    const { title, backLink, ...rest } = this.props
+const FeedItemPage: FunctionComponent<Props> = props => {
+  const { title, backLink, ...rest } = props
 
-    return (
-      <>
-        <MainAppBar>
-          <IconButton
-            color='inherit'
-            component={(props: any) => <Link {...props} to={backLink} />}
-          >
-            <ArrowBackIcon />
-          </IconButton>
+  return (
+    <>
+      <MainAppBar>
+        <IconButton
+          color='inherit'
+          component={(linkProps: any) => <Link {...linkProps} to={backLink} />}
+        >
+          <ArrowBackIcon />
+        </IconButton>
 
-          <AppBarTitle>{title}</AppBarTitle>
-        </MainAppBar>
+        <AppBarTitle>{title}</AppBarTitle>
+      </MainAppBar>
 
-        <CustomWrapper>
-          <FeedItemCard title={title} {...rest} />
-        </CustomWrapper>
-      </>
-    )
-  }
+      <CustomWrapper>
+        <FeedItemCard title={title} {...rest} />
+      </CustomWrapper>
+    </>
+  )
 }
 
 export default FeedItemPage

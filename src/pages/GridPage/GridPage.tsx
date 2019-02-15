@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { FunctionComponent } from 'react'
 import withWidth, { isWidthUp, WithWidth } from '@material-ui/core/withWidth'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
@@ -29,37 +29,33 @@ type Props = {
   }>
 } & WithWidth
 
-class GridPage extends Component<Props> {
-  render() {
-    const { gridItems, width } = this.props
-
-    return (
-      <>
-        <MainAppBar>
-          <AppBarTitle>Image Grid</AppBarTitle>
-        </MainAppBar>
-        <CustomWrapper>
-          <GridList cellHeight={isWidthUp('sm', width) ? 300 : 180}>
-            {gridItems &&
-              gridItems.map(({ id, title, imgSrc, subtitle }, index) => (
-                <GridListTile key={id}>
-                  <img src={imgSrc} alt={title} />
-                  <GridListTileBar
-                    title={title}
-                    subtitle={subtitle}
-                    actionIcon={
-                      <IconButton>
-                        <InfoIcon />
-                      </IconButton>
-                    }
-                  />
-                </GridListTile>
-              ))}
-          </GridList>
-        </CustomWrapper>
-      </>
-    )
-  }
+const GridPage: FunctionComponent<Props> = props => {
+  return (
+    <>
+      <MainAppBar>
+        <AppBarTitle>Image Grid</AppBarTitle>
+      </MainAppBar>
+      <CustomWrapper>
+        <GridList cellHeight={isWidthUp('sm', props.width) ? 300 : 180}>
+          {props.gridItems &&
+            props.gridItems.map(({ id, title, imgSrc, subtitle }) => (
+              <GridListTile key={id}>
+                <img src={imgSrc} alt={title} />
+                <GridListTileBar
+                  title={title}
+                  subtitle={subtitle}
+                  actionIcon={
+                    <IconButton>
+                      <InfoIcon />
+                    </IconButton>
+                  }
+                />
+              </GridListTile>
+            ))}
+        </GridList>
+      </CustomWrapper>
+    </>
+  )
 }
 
 export default withWidth()(GridPage)

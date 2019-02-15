@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles'
 import createStyles from '@material-ui/core/styles/createStyles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
@@ -36,93 +36,70 @@ type Props = {
   onDone: () => void
 } & WithStyles<typeof styles>
 
-type State = {
-  activeStep: number
-}
+const SwipeableTextMobileStepper: FunctionComponent<Props> = props => {
+  const [activeStep, setActiveStep] = useState<number>(0)
 
-class SwipeableTextMobileStepper extends Component<Props, State> {
-  state = {
-    activeStep: 0
-  }
-
-  handleNext = () => {
-    const { onDone } = this.props
-
-    if (this.state.activeStep < maxSteps - 1) {
-      this.setState(prevState => ({
-        activeStep: prevState.activeStep + 1
-      }))
+  const handleNext = () => {
+    if (activeStep < maxSteps - 1) {
+      setActiveStep(activeStep + 1)
     } else {
-      onDone()
+      props.onDone()
     }
   }
 
-  handleBack = () => {
-    this.setState(prevState => ({
-      activeStep: prevState.activeStep - 1
-    }))
-  }
+  return (
+    <>
+      <SwipeableViews
+        index={activeStep}
+        onChangeIndex={setActiveStep}
+        className={props.classes.swipeableViews}
+      >
+        <div className={props.classes.stepWrapper}>
+          <img className={props.classes.img} src={Image1} alt='Mountains' />
+        </div>
 
-  handleStepChange = (activeStep: number) => {
-    this.setState({ activeStep })
-  }
+        <div className={props.classes.stepWrapper}>
+          <img className={props.classes.img} src={Image2} alt='City Lights' />
+        </div>
 
-  render() {
-    const { classes } = this.props
-    const { activeStep } = this.state
+        <div className={props.classes.stepWrapper}>
+          <img className={props.classes.img} src={Image3} alt='River' />
+        </div>
 
-    return (
-      <>
-        <SwipeableViews
-          index={activeStep}
-          onChangeIndex={this.handleStepChange}
-          className={classes.swipeableViews}
-        >
-          <div className={classes.stepWrapper}>
-            <img className={classes.img} src={Image1} alt='Mountains' />
-          </div>
+        <div className={props.classes.stepWrapper}>
+          <img className={props.classes.img} src={Image4} alt='Beach' />
+        </div>
+      </SwipeableViews>
 
-          <div className={classes.stepWrapper}>
-            <img className={classes.img} src={Image2} alt='City Lights' />
-          </div>
-
-          <div className={classes.stepWrapper}>
-            <img className={classes.img} src={Image3} alt='River' />
-          </div>
-
-          <div className={classes.stepWrapper}>
-            <img className={classes.img} src={Image4} alt='Beach' />
-          </div>
-        </SwipeableViews>
-
-        <MobileStepper
-          steps={maxSteps}
-          position='bottom'
-          activeStep={activeStep}
-          nextButton={
-            <Button
-              size='small'
-              onClick={this.handleNext}
-              className={activeStep === maxSteps - 1 ? classes.doneButton : ''}
-            >
-              {activeStep < maxSteps - 1 ? 'Next' : 'Done'}
-              {activeStep < maxSteps - 1 && <KeyboardArrowRight />}
-            </Button>
-          }
-          backButton={
-            <Button
-              size='small'
-              onClick={this.handleBack}
-              disabled={activeStep === 0}
-            >
-              <KeyboardArrowLeft />
-              Back
-            </Button>
-          }
-        />
-      </>
-    )
-  }
+      <MobileStepper
+        steps={maxSteps}
+        position='bottom'
+        activeStep={activeStep}
+        nextButton={
+          <Button
+            size='small'
+            onClick={handleNext}
+            className={
+              activeStep === maxSteps - 1 ? props.classes.doneButton : ''
+            }
+          >
+            {activeStep < maxSteps - 1 ? 'Next' : 'Done'}
+            {activeStep < maxSteps - 1 && <KeyboardArrowRight />}
+          </Button>
+        }
+        backButton={
+          <Button
+            size='small'
+            onClick={() => setActiveStep(activeStep - 1)}
+            disabled={activeStep === 0}
+          >
+            <KeyboardArrowLeft />
+            Back
+          </Button>
+        }
+      />
+    </>
+  )
 }
 
 export default withStyles(styles)(SwipeableTextMobileStepper)
