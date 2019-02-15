@@ -1,24 +1,20 @@
-import React, { Component } from 'react'
+import React, { FunctionComponent, useState, useEffect } from 'react'
 import GridPage from '../../pages/GridPage'
 import analytics from '../../analytics'
 import firestore from '../../firebase/firestore'
 import { RouteComponentProps } from 'react-router'
 
-type State = {
-  gridItems: Array<{
-    id: string
-    title: string
-    subtitle: string
-    imgSrc: string
-  }>
+type GridItem = {
+  id: string
+  title: string
+  subtitle: string
+  imgSrc: string
 }
 
-class GridPageContainer extends Component<RouteComponentProps, State> {
-  state = {
-    gridItems: []
-  }
+const GridPageContainer: FunctionComponent<RouteComponentProps> = props => {
+  const [gridItems, setGridItems] = useState<GridItem[]>([])
 
-  componentDidMount() {
+  useEffect(() => {
     analytics.pageViewed({
       pageTitle: 'Grid',
       pagePath: '/grid'
@@ -28,20 +24,18 @@ class GridPageContainer extends Component<RouteComponentProps, State> {
       .collection('posts')
       .get()
       .then(snapshot => {
-        this.setState({
-          gridItems: snapshot.docs.map(doc => ({
+        setGridItems(
+          snapshot.docs.map(doc => ({
             id: doc.id,
             title: doc.data().title,
             subtitle: `id: ${doc.id}`,
             imgSrc: doc.data().media
           }))
-        })
+        )
       })
-  }
+  }, [])
 
-  render() {
-    return <GridPage gridItems={this.state.gridItems} />
-  }
+  return <GridPage gridItems={gridItems} />
 }
 
 export default GridPageContainer

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles'
 import createStyles from '@material-ui/core/styles/createStyles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
@@ -65,85 +65,75 @@ type State = {
   activeStep: number
 }
 
-class WebOnboarding extends Component<Props, State> {
-  state = {
-    activeStep: 0
+const WebOnboarding: FunctionComponent<Props> = props => {
+  const [activeStep, setActiveStep] = useState<number>(0)
+
+  const handleNext = () => {
+    setActiveStep(activeStep + 1)
   }
 
-  handleNext = () => {
-    this.setState({
-      activeStep: this.state.activeStep + 1
-    })
+  const handleBack = () => {
+    setActiveStep(activeStep - 1)
   }
 
-  handleBack = () => {
-    this.setState({
-      activeStep: this.state.activeStep - 1
-    })
-  }
+  const steps = getSteps()
 
-  render() {
-    const { onDone, classes } = this.props
-    const steps = getSteps()
-    const { activeStep } = this.state
-
-    return (
-      <>
-        <AppBar>
-          <AppBarTitle>Getting Started</AppBarTitle>
-        </AppBar>
-        <CustomWrapper>
-          <Stepper activeStep={activeStep} orientation='vertical'>
-            {steps.map((label, index) => {
-              return (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                  <StepContent>
-                    <Typography>{getStepContent(index)}</Typography>
-                    <div className={classes.actionsContainer}>
-                      <div>
-                        <Button
-                          disabled={activeStep === 0}
-                          onClick={this.handleBack}
-                          className={classes.button}
-                        >
-                          Back
-                        </Button>
-                        <Button
-                          variant='contained'
-                          color='primary'
-                          onClick={this.handleNext}
-                          className={classes.button}
-                        >
-                          {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                        </Button>
-                      </div>
+  return (
+    <>
+      <AppBar>
+        <AppBarTitle>Getting Started</AppBarTitle>
+      </AppBar>
+      <CustomWrapper>
+        <Stepper activeStep={activeStep} orientation='vertical'>
+          {steps.map((label, index) => {
+            return (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+                <StepContent>
+                  <Typography>{getStepContent(index)}</Typography>
+                  <div className={props.classes.actionsContainer}>
+                    <div>
+                      <Button
+                        disabled={activeStep === 0}
+                        onClick={handleBack}
+                        className={props.classes.button}
+                      >
+                        Back
+                      </Button>
+                      <Button
+                        variant='contained'
+                        color='primary'
+                        onClick={handleNext}
+                        className={props.classes.button}
+                      >
+                        {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                      </Button>
                     </div>
-                  </StepContent>
-                </Step>
-              )
-            })}
-          </Stepper>
-          {activeStep === steps.length && (
-            <Paper square elevation={0} className={classes.finishContainer}>
-              <Typography>All steps completed - you're finished</Typography>
-              <Button onClick={this.handleBack} className={classes.button}>
-                Back
-              </Button>
-              <Button
-                onClick={onDone}
-                className={classes.button}
-                color='primary'
-                variant='contained'
-              >
-                Get Started
-              </Button>
-            </Paper>
-          )}
-        </CustomWrapper>
-      </>
-    )
-  }
+                  </div>
+                </StepContent>
+              </Step>
+            )
+          })}
+        </Stepper>
+        {activeStep === steps.length && (
+          <Paper square elevation={0} className={props.classes.finishContainer}>
+            <Typography>All steps completed - you're finished</Typography>
+            <Button onClick={handleBack} className={props.classes.button}>
+              Back
+            </Button>
+            <Button
+              onClick={props.onDone}
+              className={props.classes.button}
+              color='primary'
+              variant='contained'
+            >
+              Get Started
+            </Button>
+          </Paper>
+        )}
+      </CustomWrapper>
+    </>
+  )
 }
 
 export default withStyles(styles)(WebOnboarding)

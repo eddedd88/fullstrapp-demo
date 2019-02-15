@@ -1,64 +1,39 @@
-import React, { Component } from 'react'
+import React, { FunctionComponent, useState, useEffect } from 'react'
 import FeedPage from '../../pages/FeedPage'
 import FeedItem from '../../models/FeedItem'
 import analytics from '../../analytics'
 import firestore from '../../firebase/firestore'
 import { RouteComponentProps } from 'react-router'
 
-type State = {
-  feedItems: Partial<FeedItem>[]
-}
+const FeedPageContainer: FunctionComponent<RouteComponentProps> = props => {
+  const [feedItems, setFeedItems] = useState<FeedItem[]>([])
 
-class FeedPageContainer extends Component<RouteComponentProps, State> {
-  state = {
-    feedItems: []
-  }
-
-  unsubscribeObserver?: () => void
-
-  componentDidMount() {
+  useEffect(() => {
     analytics.pageViewed({
       pageTitle: 'Feed',
       pagePath: '/feed'
     })
-
-    this.unsubscribeObserver = firestore
-      .collection('posts')
-      .onSnapshot(snapshot => {
-        this.setState({
-          feedItems: snapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-          }))
-        })
-      })
-  }
-
-  componentWillUnmount() {
-    if (this.unsubscribeObserver) {
-      this.unsubscribeObserver()
-    }
-  }
-
-  handleAddFeedItem = (newFeedItem: FeedItem) => {
-    this.setState({
-      feedItems: [
-        ...this.state.feedItems,
-        {
-          id: this.state.feedItems.length + 1,
-          ...newFeedItem
-        }
-      ]
+    return firestore.collection('posts').onSnapshot(snapshot => {
+      setFeedItems(
+        snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...(doc.data() as FeedItem)
+        }))
+      )
     })
+  }, [])
+
+  const handleAddFeedItem = (newFeedItem: FeedItem) => {
+    setFeedItems([
+      ...feedItems,
+      {
+        id: feedItems.length + 1,
+        ...newFeedItem
+      }
+    ])
   }
 
-  render() {
-    const { feedItems } = this.state
-
-    return (
-      <FeedPage feedItems={feedItems} onAddFeedItem={this.handleAddFeedItem} />
-    )
-  }
+  return <FeedPage feedItems={feedItems} onAddFeedItem={handleAddFeedItem} />
 }
 
 export default FeedPageContainer

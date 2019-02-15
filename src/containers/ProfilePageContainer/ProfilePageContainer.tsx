@@ -1,31 +1,25 @@
-import React, { Component } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import ProfilePage from '../../pages/ProfilePage'
 import analytics from '../../analytics'
 import firebase from '../../firebase'
 import { RouteComponentProps } from 'react-router'
 
-type State = {
-  statusIsKnown: boolean
-}
+const ProfilePageContainer: FunctionComponent<RouteComponentProps> = props => {
+  const [statusIsKnown, setStatusIsKnown] = useState<boolean>(false)
 
-class ProfilePageContainer extends Component<RouteComponentProps, State> {
-  componentDidMount() {
+  useEffect(() => {
     analytics.pageViewed({
       pageTitle: 'Profile',
       pagePath: '/profile'
     })
 
-    firebase.auth().onAuthStateChanged(user => {
+    return firebase.auth().onAuthStateChanged(user => {
       console.log(user)
-      this.setState({
-        statusIsKnown: true
-      })
+      setStatusIsKnown(true)
     })
-  }
+  }, [])
 
-  render() {
-    return <ProfilePage {...this.state} />
-  }
+  return <ProfilePage statusIsKnown={statusIsKnown} />
 }
 
 export default ProfilePageContainer
