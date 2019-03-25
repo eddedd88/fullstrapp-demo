@@ -42,7 +42,7 @@ const styles = (theme: Theme) =>
       paddingLeft: 0
     },
     feedItemWrapper: {
-      marginTop: theme.spacing.unit
+      marginBottom: theme.spacing.unit
     }
   })
 
@@ -50,11 +50,6 @@ type Props = {
   feedItems: FeedItem[]
   onAddFeedItem: (feedItem: FeedItem) => void
 } & WithStyles<typeof styles>
-
-type State = {
-  open: boolean
-  form: Partial<FeedItem>
-}
 
 const FeedPage: FunctionComponent<Props> = props => {
   const [open, setOpen] = useState<boolean>(false)
@@ -104,41 +99,40 @@ const FeedPage: FunctionComponent<Props> = props => {
         <FabButton color='secondary' onClick={toggleDialog}>
           <CreateIcon />
         </FabButton>
-
-        <FormDialog
-          open={open}
-          onClose={toggleDialog}
-          title='New Feed Item'
-          submitLabel='Post'
-          onSubmit={handleSubmit}
-        >
-          <TextField
-            name='title'
-            label='Title'
-            onChange={handleInputChange}
-            fullWidth
-            autoFocus
-            required
-          />
-
-          <TextField
-            name='content'
-            label={`What's on your mind?`}
-            onChange={handleInputChange}
-            fullWidth
-            multiline
-            margin='normal'
-            required
-          />
-
-          <FileInput capture='camera'>
-            <Button component='span' className={props.classes.cameraButton}>
-              <PhotoCameraIcon className={props.classes.buttonLeftIcon} />
-              Add a Picture
-            </Button>
-          </FileInput>
-        </FormDialog>
       </Wrapper>
+      <FormDialog
+        open={open}
+        onClose={toggleDialog}
+        title='New Feed Item'
+        submitLabel='Post'
+        onSubmit={handleSubmit}
+      >
+        <TextField
+          name='title'
+          label='Title'
+          onChange={handleInputChange}
+          fullWidth
+          autoFocus
+          required
+        />
+
+        <TextField
+          name='content'
+          label={`What's on your mind?`}
+          onChange={handleInputChange}
+          fullWidth
+          multiline
+          margin='normal'
+          required
+        />
+
+        <FileInput capture='camera'>
+          <Button component='span' className={props.classes.cameraButton}>
+            <PhotoCameraIcon className={props.classes.buttonLeftIcon} />
+            Add a Picture
+          </Button>
+        </FileInput>
+      </FormDialog>
     </>
   )
 }

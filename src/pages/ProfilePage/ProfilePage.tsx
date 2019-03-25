@@ -38,19 +38,11 @@ const styles = (theme: Theme) =>
 
 type Props = {
   user?: {
-    profilePicture: string
+    profilePicture?: string
     name: string
   }
   statusIsKnown: boolean
 } & WithStyles<typeof styles>
-
-const CustomWrapper = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      marginTop: theme.spacing.unit * 2
-    }
-  })
-)(Wrapper)
 
 const CustomAvatar = withStyles((theme: Theme) =>
   createStyles({
@@ -96,7 +88,7 @@ const ProfilePage: FunctionComponent<Props> = props => {
         </Typography>
       </AppBar>
 
-      <CustomWrapper>
+      <Wrapper>
         <Card>
           <CardContent>
             <Typography
@@ -145,7 +137,7 @@ const ProfilePage: FunctionComponent<Props> = props => {
             />
           </Grid>
         </Grid>
-      </CustomWrapper>
+      </Wrapper>
     </>
   )
 }
