@@ -6,19 +6,8 @@ import GridListTileBar from '@material-ui/core/GridListTileBar'
 import IconButton from '@material-ui/core/IconButton'
 import InfoIcon from '@material-ui/icons/Info'
 import Wrapper from '../../components/Wrapper'
-import withStyles from '@material-ui/core/styles/withStyles'
-import createStyles from '@material-ui/core/styles/createStyles'
-import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import MainAppBar from '../../components/MainAppBar'
 import AppBarTitle from '../../components/AppBarTitle'
-
-const CustomWrapper = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      marginTop: theme.spacing.unit
-    }
-  })
-)(Wrapper)
 
 type Props = {
   gridItems: Array<{
@@ -35,7 +24,7 @@ const GridPage: FunctionComponent<Props> = props => {
       <MainAppBar>
         <AppBarTitle>Image Grid</AppBarTitle>
       </MainAppBar>
-      <CustomWrapper>
+      <Wrapper>
         <GridList cellHeight={isWidthUp('sm', props.width) ? 300 : 180}>
           {props.gridItems &&
             props.gridItems.map(({ id, title, imgSrc, subtitle }) => (
@@ -53,7 +42,7 @@ const GridPage: FunctionComponent<Props> = props => {
               </GridListTile>
             ))}
         </GridList>
-      </CustomWrapper>
+      </Wrapper>
     </>
   )
 }

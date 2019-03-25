@@ -11,14 +11,6 @@ import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import MainAppBar from '../../components/MainAppBar'
 
-const CustomWrapper = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      marginTop: theme.spacing.unit
-    }
-  })
-)(Wrapper)
-
 type Props = FeedItem & {
   backLink: string
 }
@@ -39,9 +31,9 @@ const FeedItemPage: FunctionComponent<Props> = props => {
         <AppBarTitle>{title}</AppBarTitle>
       </MainAppBar>
 
-      <CustomWrapper>
+      <Wrapper>
         <FeedItemCard title={title} {...rest} />
-      </CustomWrapper>
+      </Wrapper>
     </>
   )
 }
